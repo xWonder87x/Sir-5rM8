@@ -176,7 +176,7 @@ async def ratecheck():
             keys.append(key)
             values.append(value)
    
-for ent in serverlist:
+      for ent in serverlist:
          try:
             guild=bot.get_guild(int(ent['server_id']))
             channel=guild.get_channel(int(ent['channel_id']))
@@ -240,8 +240,8 @@ for ent in serverlist:
 @app_commands.checks.has_permissions(administrator=True)
 async def set_rate_channel(int:discord.Integration,channel:TextChannel,role:Role):
    functions.add_server_channel(str(int.guild.id),str(channel.id),str(role.id))
-   await channel.send("This channel has been set for automatic updates for Official Server rates.")
-   await int.response.send_message(f"{channel.mention} has been set for automatic updates for Official Server rates.")
+   await channel.send("This channel is been set for automatic Official PVE rates updates.")
+   await int.response.send_message(f"{channel.mention} is set for automatic Official PVE rates updates.")
 
 @bot.tree.error
 async def on_app_commandError(int:discord.Interaction,error):
