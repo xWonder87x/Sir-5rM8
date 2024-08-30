@@ -83,7 +83,7 @@ def loop():
       newfile=str(file3.read())
    
    if last!= newfile:
-      with open("rate-notification-channels", "r") as file:
+      with open("rate-notification-channels.json", "r") as file:
             data = json.load(file)
       lines=current_data.text.strip().splitlines()
       with open("previous-rates.text","w") as file:
