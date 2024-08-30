@@ -161,7 +161,7 @@ async def show_tips(int:discord.Integration):
 #    elif message.content.startswith('coffee'):
 #        await message.reply('Here, I have a cup for you ☕ !', mention_author=True)
 
-#intervel rates check
+#Intervel Rates Check
 async def ratecheck():
    serverlist,data,flag=functions.loop()
    if flag==0:
@@ -240,23 +240,12 @@ async def ratecheck():
 @app_commands.checks.has_permissions(administrator=True)
 async def set_rate_channel(int:discord.Integration,channel:TextChannel,role:Role):
    functions.add_server_channel(str(int.guild.id),str(channel.id),str(role.id))
-   await channel.send("This channel is been set for automatic Official PVE rates updates.")
-   await int.response.send_message(f"{channel.mention} is set for automatic Official PVE rates updates.")
+   await channel.send("# This channel is been set for automatic Official PVE rates updates.")
+   await int.response.send_message(f"{channel.mention} is set for automatic Official PVE rates updates.",ephemeral=True)
 
 @bot.tree.error
 async def on_app_commandError(int:discord.Interaction,error):
    await int.response.send_message(error,ephemeral=True)
-
-
-
-
-
-
-
-
-
-
-
 
 
 bot.run(my_secret)
