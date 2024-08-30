@@ -1,9 +1,9 @@
-TamingSpeedMultiplier=1.0
+TamingSpeedMultiplier=2.0
 HarvestAmountMultiplier=2.0
 XPMultiplier=2.0
-MatingIntervalMultiplier=0.5
+MatingIntervalMultiplier=2.0
 BabyMatureSpeedMultiplier=2.0
 EggHatchSpeedMultiplier=2.0
-BabyCuddleIntervalMultiplier=0.6
+BabyCuddleIntervalMultiplier=2.0
 BabyImprintAmountMultiplier=2.0
-HexagonRewardMultiplier=1.0
+HexagonRewardMultiplier=2.0
