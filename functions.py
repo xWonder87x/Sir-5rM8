@@ -43,7 +43,7 @@ def add_server_channel(server_id:str,channel_id:str,role:str):
                      break
             else:
                entry = {"server_id": server_id, "channel_id": channel_id,"role": role}
-               print("when data is not avlaible")
+               print("File is empty or data is not avalaible")
                data.append(entry)
    except FileNotFoundError:
       print("file not found")
