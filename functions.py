@@ -31,7 +31,7 @@ def find_server(find):
 #make record of channel server id and channel id 
 def add_server_channel(server_id:str,channel_id:str,role:str):
    try:
-      with open("channels.json", "r") as file:
+      with open("rate-notification-channels", "r") as file:
             data = json.load(file)
             for entry in data:
                if entry["server_id"] == server_id:
@@ -52,7 +52,7 @@ def add_server_channel(server_id:str,channel_id:str,role:str):
       print("when file not found")
       data.append(entry)
    
-   with open("channels.json", "w") as file:
+   with open("rate-notification-channels", "w") as file:
       json.dump(data, file)
 
 last=None
@@ -61,9 +61,9 @@ last=None
 #check rates is changed or not 
 def sfile():
    last=requests.get(rate_url)
-   lines=last.text.strip().splitlines()
+   lines=previous-rates.text.strip().splitlines()
    print(last)
-   with open("last.text","w") as file:
+   with open("previous-rates.text","w") as file:
       for line in lines:
          file.writelines(line+"\n")
 
@@ -74,19 +74,19 @@ def loop():
    current_data=requests.get(rate_url)
    new=current_data.text+'\n'
    lines=current_data.text.strip().splitlines()
-   with open("last.text","r") as file1:
+   with open("previous-rates.text","r") as file1:
       last=str(file1.read())
-   with open("new.text","w") as file2:
+   with open("current-rates.text","w") as file2:
       for line1 in lines:
          file2.write(line1+"\n")
-   with open("new.text","r") as file3:
+   with open("current-rates.text","r") as file3:
       newfile=str(file3.read())
    
    if last!= newfile:
-      with open("channels.json", "r") as file:
+      with open("rate-notification-channels", "r") as file:
             data = json.load(file)
       lines=current_data.text.strip().splitlines()
-      with open("last.text","w") as file:
+      with open("previous-rates.text","w") as file:
          for line in lines:
             file.write(line+"\n")
       print(last)

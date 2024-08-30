@@ -176,22 +176,62 @@ async def ratecheck():
             keys.append(key)
             values.append(value)
    
-      for ent in serverlist:
+for ent in serverlist:
          try:
             guild=bot.get_guild(int(ent['server_id']))
             channel=guild.get_channel(int(ent['channel_id']))
             role=guild.get_role(int(ent['role']))   
-            emb=discord.Embed(
-            title= 'ASA Official PVE Server Rates',
-            description=(f"**{keys[0]}** = {values[0]}\n**{keys[1]}** = {values[1]} \n**{keys[2]}** = {values[2]}\n**{keys[3]}** = {values[3]}\n**{keys[4]}** = {values[4]}\n**{keys[5]}** = {values[5]}\n**{keys[6]}** = {values[6]}\n**{keys[7]}** = {values[7]}"),
-            colour=discord.Colour.pink()
+            emb=discord.Embed(                            
+                              title= 'ASA Official Server Rates',
+                              description="",
+                              colour=discord.Colour.pink()
+                              )
+            emb.set_thumbnail(url='https://ark.wiki.gg/images/thumb/0/0a/ASA_Logo_transparent.png/198px-ASA_Logo_transparent.png')
+            emb.add_field(
+               name=f"**✨ `{values[2]}x` EXP**",
+               value='',
+               inline=False)
+
+            emb.add_field(
+               name=f"**🌴 `{values[1]}x` Harvesting**",
+               value='',
+               inline=False
+            )
+            emb.add_field(
+               name=f"**🦖 `{values[0]}x` Taming**",
+               value='',
+               inline=False
+            )
+            emb.add_field(
+               name=f"**💞 `{values[3]}x` Mating Interval**",
+               value='',
+               inline=False
+            )
+            emb.add_field(
+               name=f"**🐣 `{values[5]}x` Egg Hatch**",
+               value='',
+               inline=False
+            )
+            emb.add_field(
+               name=f"**🐤 `{values[4]}x` Baby Mature**",
+               value='',
+               inline=False
+            )
+            emb.add_field(
+               name=f"**🤗 `{values[7]}x` Imprint**",
+               value='',
+               inline=False
+            )
+            emb.add_field(
+               name=f"**🤗 `{values[6]}x` Cuddle Interval**",
+               value='',
+               inline=False
             )
             emb.set_thumbnail(url=f"{img}")
             await channel.send(embed=emb)
             await channel.send(f"{role.mention}")
          except KeyError:
             print("Server channel missing or went something wrong!")
-      await asyncio.sleep(300)  # 300 seconds = 5 minutes
       await ratecheck()
 
 @bot.tree.command(name="set_rate_channel",description="set channel for rate updates")
@@ -200,8 +240,8 @@ async def ratecheck():
 @app_commands.checks.has_permissions(administrator=True)
 async def set_rate_channel(int:discord.Integration,channel:TextChannel,role:Role):
    functions.add_server_channel(str(int.guild.id),str(channel.id),str(role.id))
-   await channel.send("This channel is been set for automatic Official PVE rates updates.")
-   await int.response.send_message(f"{channel.mention} is set for automatic Official PVE rates updates.")
+   await channel.send("This channel has been set for automatic updates for Official Server rates.")
+   await int.response.send_message(f"{channel.mention} has been set for automatic updates for Official Server rates.")
 
 @bot.tree.error
 async def on_app_commandError(int:discord.Interaction,error):
