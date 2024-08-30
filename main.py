@@ -35,10 +35,10 @@ rate_url="https://cdn2.arkdedicated.com/asa/dynamicconfig.ini"
     
 @bot.event
 async def on_ready():
-  print('We have logged in as {0.user}')
+  print('Logged in as {0.user}')
   try:
      synced = await bot.tree.sync()
-     print(f"Synced {len(synced)} command(s)")
+     print(f"Syncing commands. {len(synced)} Synced.")
      await ratecheck()
      #functions.sfile()
   except Exception as e:
@@ -63,48 +63,48 @@ async def rates(int: discord.Interaction):
             values.append(value)
   
   emb=discord.Embed(
-     title= 'Ark ascended Official server Rates',
+     title= 'ASA Official Server Rates',
      description="",
      colour=discord.Colour.pink()
    )
-  emb.set_thumbnail(url=f"{img}")
+  emb.set_thumbnail(url='https://ark.wiki.gg/images/thumb/0/0a/ASA_Logo_transparent.png/198px-ASA_Logo_transparent.png')
   emb.add_field(
-     name=keys[0]+' = '+values[0],
+     name=f"**✨ `{values[2]}x` EXP**",
+     value='',
+     inline=False)
+
+  emb.add_field(
+     name=f"**🌴 `{values[1]}x` Harvesting**",
      value='',
      inline=False
   )
   emb.add_field(
-     name=keys[1]+' = '+values[1],
+     name=f"**🦖 `{values[0]}x` Taming**",
      value='',
      inline=False
   )
   emb.add_field(
-     name=keys[2]+' = '+values[2],
+     name=f"**💞 `{values[3]}x` Mating Interval**",
      value='',
      inline=False
   )
   emb.add_field(
-     name=keys[3]+' = '+values[3],
+     name=f"**🐣 `{values[5]}x` Egg Hatch**",
      value='',
      inline=False
   )
   emb.add_field(
-     name=keys[4]+' = '+values[4],
+     name=f"**🐤 `{values[4]}x` Baby Mature**",
      value='',
      inline=False
   )
   emb.add_field(
-     name=keys[5]+' = '+values[5],
+     name=f"**🤗 `{values[7]}x` Imprint**",
      value='',
      inline=False
   )
   emb.add_field(
-     name=keys[6]+' = '+values[6],
-     value='',
-     inline=False
-  )
-  emb.add_field(
-     name=keys[7]+' = '+values[7],
+     name=f"**🤗 `{values[6]}x` Cuddle Interval**",
      value='',
      inline=False
   )
@@ -182,10 +182,10 @@ async def ratecheck():
             channel=guild.get_channel(int(ent['channel_id']))
             role=guild.get_role(int(ent['role']))   
             emb=discord.Embed(                            
-                              title= 'ASA Official Server Rates',
-                              description="",
-                              colour=discord.Colour.pink()
-                              )
+               title= 'ASA Official Server Rates',
+               description="",
+               colour=discord.Colour.pink()
+               )
             emb.set_thumbnail(url='https://ark.wiki.gg/images/thumb/0/0a/ASA_Logo_transparent.png/198px-ASA_Logo_transparent.png')
             emb.add_field(
                name=f"**✨ `{values[2]}x` EXP**",
