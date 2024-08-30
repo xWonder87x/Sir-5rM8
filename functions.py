@@ -31,7 +31,7 @@ def find_server(find):
 #make record of channel server id and channel id 
 def add_server_channel(server_id:str,channel_id:str,role:str):
    try:
-      with open("rate-notification-channels", "r") as file:
+      with open("rate-notification-channels.json", "r") as file:
             data = json.load(file)
             for entry in data:
                if entry["server_id"] == server_id:
@@ -52,7 +52,7 @@ def add_server_channel(server_id:str,channel_id:str,role:str):
       print("when file not found")
       data.append(entry)
    
-   with open("rate-notification-channels", "w") as file:
+   with open("rate-notification-channels.json", "w") as file:
       json.dump(data, file)
 
 last=None
