@@ -23,9 +23,9 @@ def find_server(find):
                   )
                found=True
    if not found:
-      return "Server is Not found Or Offline"
+      return "I couldn't find the Server, probably it's offline."
    else:
-      return "Server is Not found Or Offline"
+      return "I couldn't find the Server, probably it's offline."
 
 
 #make record of channel server id and channel id 

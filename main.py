@@ -231,7 +231,8 @@ async def ratecheck():
             await channel.send(embed=emb)
             await channel.send(f"{role.mention}")
          except KeyError:
-            print("Server channel missing or went something wrong!")
+            print("I can't find the channel. Or something went very wrong!")
+      await asyncio.sleep(30)  # 300 seconds = 5 minutes
       await ratecheck()
 
 @bot.tree.command(name="set_rate_channel",description="set channel for rate updates")
@@ -240,8 +241,8 @@ async def ratecheck():
 @app_commands.checks.has_permissions(administrator=True)
 async def set_rate_channel(int:discord.Integration,channel:TextChannel,role:Role):
    functions.add_server_channel(str(int.guild.id),str(channel.id),str(role.id))
-   await channel.send("# This channel is been set for automatic Official PVE rates updates.")
-   await int.response.send_message(f"{channel.mention} is set for automatic Official PVE rates updates.",ephemeral=True)
+   await channel.send("# This channel is been set for automatic updates on Official Server rates.")
+   await int.response.send_message(f"{channel.mention} is set for automatic updates on Official Server rates.",ephemeral=True)
 
 @bot.tree.error
 async def on_app_commandError(int:discord.Interaction,error):
