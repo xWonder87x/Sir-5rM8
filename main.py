@@ -111,6 +111,13 @@ async def rates(int: discord.Interaction):
   
   await int.response.send_message(embed=emb)
 
+#server status command
+@bot.tree.command(name="serverstatus", description="Checks the server status")
+@app_commands.describe(server="Server Number")
+async def serverstatus(int: discord.Interaction,server:str):
+   await int.response.send_message(f"Searching for {server}\n-------------------------------")
+   result=functions.find_server(server)
+   await int.channel.send(result)
     
 #Sends a DM to summon the selected user
 @bot.tree.command(name="summon", description="Summon a user via DM")
