@@ -126,17 +126,5 @@ async def ratecheck():
             except KeyError:
                 print("Server channel missing or something went wrong!")
                 
-@bot.tree.command(name="set_rate_channel",description="Choose a channel for official rate auto updates")
-@app_commands.describe(channel="channel")
-@app_commands.describe(role="role")
-@app_commands.checks.has_permissions(administrator=True)
-async def set_rate_channel(int:discord.Integration,channel:TextChannel,role:Role):
-   functions.add_server_channel(str(int.guild.id),str(channel.id),str(role.id))
-   await channel.send("# This channel is been set for automatic Official Server rate updates.")
-   await int.response.send_message(f"Automatic updates will now be send to {channel.mention} and members with the role <@&{role.id}> will get notified.")
-
-@bot.tree.error
-async def on_app_commandError(int:discord.Interaction,error):
-   await int.response.send_message(error,ephemeral=True)
 
 bot.run(my_secret)
